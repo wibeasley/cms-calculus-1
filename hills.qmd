@@ -22,6 +22,7 @@ The following red & blue hills are modeled by a line. "Hill B" is blue and "Hill
 
 ```{r}
 #| echo: false
+#| layout-ncol: 2
 ggplot(d, aes(x = x, y = y)) +
   geom_line(color = "transparent") +
   geom_abline(slope = -.25, intercept = 5, color = color_a) +
@@ -46,10 +47,7 @@ ggplot(d, aes(x = x, y = y)) +
     subtitle = "Lines", 
     y        = "y"
   )
-```
 
-```{r}
-#| echo: false
 ggplot(d, aes(x = x, y = y)) +
   # geom_line() +
   geom_abline(slope = .75, intercept = 0, color = color_a) +
@@ -74,10 +72,7 @@ ggplot(d, aes(x = x, y = y)) +
     subtitle = "Lines", 
     y        = "y"
   )
-```
 
-```{r}
-#| echo: false
 ggplot(d, aes(x = x, y = y)) +
   # geom_line() +
   geom_abline(slope = .50, intercept = 2, color = color_a) +
@@ -102,10 +97,7 @@ ggplot(d, aes(x = x, y = y)) +
     subtitle = "Lines", 
     y        = "y"
   )
-```
 
-```{r}
-#| echo: false
 ggplot(d, aes(x = x, y = y)) +
   # geom_line() +
   # geom_abline(slope = .50, intercept = 2, color = color_a) +
@@ -130,10 +122,7 @@ ggplot(d, aes(x = x, y = y)) +
     subtitle = "Lines", 
     y        = "y"
   )
-```
 
-```{r}
-#| echo: false
 ggplot(d, aes(x = x, y = y)) +
   # geom_line() +
   # geom_abline(slope = .50, intercept = 2, color = color_a) +
