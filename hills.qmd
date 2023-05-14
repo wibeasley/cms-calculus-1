@@ -1,6 +1,10 @@
 ---
 title: "hills"
+execute:
+  keep-md: true
 format: 
+  # html:
+  #   default
   docx:
     reference-doc: quarto-template.docx
     fig-width: 3.5
@@ -100,6 +104,32 @@ ggplot(d, aes(x = x, y = y)) +
 
 ggplot(d, aes(x = x, y = y)) +
   # geom_line() +
+  geom_abline(slope = .25, intercept = 4, color = color_a) +
+  geom_abline(slope = .50, intercept = 3, color = color_b) +
+  annotate(
+    "text", 
+    label="B: italic(y) == over(1, 4)*italic(x) + 4", 
+    x = 3, y = 4, 
+    parse=T, size=5, hjust=0, vjust=1, color=color_a
+  ) +
+  annotate(
+    "text", 
+    label="R: italic(y) == over(1, 2)*italic(x) + 3", 
+    x = 1, y = 6, 
+    parse=T, size=5, hjust=0, vjust=1, color=color_b
+  ) +
+  scale_x_continuous(expand = expansion(add = 0)) +
+  coord_fixed(xlim = c(0, 8), ylim = c(0, 8)) +
+  theme_minimal() +
+  labs(
+    title    = "Scenario 4", 
+    subtitle = "Lines", 
+    y        = "y"
+  )
+
+
+ggplot(d, aes(x = x, y = y)) +
+  # geom_line() +
   # geom_abline(slope = .50, intercept = 2, color = color_a) +
   # geom_abline(slope = .50, intercept = 3, color = color_b) +
   annotate(
@@ -118,7 +148,7 @@ ggplot(d, aes(x = x, y = y)) +
   coord_fixed(xlim = c(0, 8), ylim = c(0, 8)) +
   theme_minimal() +
   labs(
-    title    = "Scenario 4", 
+    title    = "Scenario 5", 
     subtitle = "Lines", 
     y        = "y"
   )
@@ -143,8 +173,139 @@ ggplot(d, aes(x = x, y = y)) +
   coord_fixed(xlim = c(0, 8), ylim = c(0, 8)) +
   theme_minimal() +
   labs(
-    title    = "Scenario 5", 
+    title    = "Scenario 6", 
     subtitle = "Lines", 
     y        = "y"
   )
+```
+
+## Parabolas
+
+The following red & blue hills are modeled by a parabola "Hill B" is blue and "Hill R" is red In each scenario, is it more difficult to bike on Hill B or Hill R?
+
+```{r}
+#| echo: false
+#| layout-ncol: 2
+ggplot(d, aes(x = x, y = y)) +
+  geom_line(color = "transparent") +
+  geom_function(fun = \(x) -.15 * (x - 5)^2  + 2, color = color_a) +
+  geom_function(fun = \(x) -2 * (x - 5)^2  + 8, color = color_b) +
+  # annotate(
+  #   "text",
+  #   label="B: italic(y) == -over(3, 1)*(italic(x) - 5)^2 + 6",
+  #   x = 0, y = 8,
+  #   parse=T, size=5, hjust=0, vjust=1, color=color_a
+  # ) +
+  # annotate(
+  #   "text",
+  #   label="R: italic(y) == -over(1, 2)*(italic(x)-5)^2 + 3",
+  #   x = 0, y = 6,
+  #   parse=T, size=5, hjust=0, vjust=1, color=color_b
+  # ) +
+  scale_x_continuous(expand = expansion(add = 0)) +
+  coord_fixed(xlim = c(0, 8), ylim = c(0, 8)) +
+  theme_minimal() +
+  labs(
+    title    = "Scenario 1", 
+    subtitle = "Parabolas", 
+    y        = "y"
+  )
+ggplot(d, aes(x = x, y = y)) +
+  geom_line(color = "transparent") +
+  geom_function(fun = \(x) -3 * (x - 4)^2  + 6, color = color_a) +
+  geom_function(fun = \(x) -.5 * (x - 4)^2  + 3, color = color_b) +
+  annotate(
+    "text",
+    label="B: italic(y) == -over(3, 1)*(italic(x) - 5)^2 + 6",
+    x = 0, y = 8,
+    parse=T, size=5, hjust=0, vjust=1, color=color_a
+  ) +
+  annotate(
+    "text",
+    label="R: italic(y) == -over(1, 2)*(italic(x)-5)^2 + 3",
+    x = 0, y = 6,
+    parse=T, size=5, hjust=0, vjust=1, color=color_b
+  ) +
+  scale_x_continuous(expand = expansion(add = 0)) +
+  coord_fixed(xlim = c(0, 8), ylim = c(0, 8)) +
+  theme_minimal() +
+  labs(
+    title    = "Scenario 2", 
+    subtitle = "Parabolas", 
+    y        = "y"
+  )
+ggplot(d, aes(x = x, y = y)) +
+  geom_line(color = "transparent") +
+  geom_function(fun = \(x) -1 * (x - 2)^2  + 3, color = color_a) +
+  geom_function(fun = \(x) -1 * (x - 5)^2  + 3, color = color_b) +
+  annotate(
+    "text",
+    label="B: italic(y) == -over(1, 1)*(italic(x) - 2)^2 + 3",
+    x = 0, y = 8,
+    parse=T, size=5, hjust=0, vjust=1, color=color_a
+  ) +
+  annotate(
+    "text",
+    label="R: italic(y) == -over(1, 1)*(italic(x)-5)^2 + 3",
+    x = 0, y = 6,
+    parse=T, size=5, hjust=0, vjust=1, color=color_b
+  ) +
+  scale_x_continuous(expand = expansion(add = 0)) +
+  coord_fixed(xlim = c(0, 8), ylim = c(0, 8)) +
+  theme_minimal() +
+  labs(
+    title    = "Scenario 3", 
+    subtitle = "Parabolas", 
+    y        = "y"
+  )
+ggplot(d, aes(x = x, y = y)) +
+  geom_line(color = "transparent") +
+  geom_function(fun = \(x) -2 * (x - 2)^2  + 3, color = color_a) +
+  geom_function(fun = \(x) -2 * (x - 3)^2  + 6, color = color_b) +
+  annotate(
+    "text",
+    label="B: italic(y) == -over(2, 1)*(italic(x) - 2)^2 + 3",
+    x = 0, y = 8,
+    parse=T, size=5, hjust=0, vjust=1, color=color_a
+  ) +
+  annotate(
+    "text",
+    label="R: italic(y) == -over(2, 1)*(italic(x) - 3)^2 + 6",
+    x = 0, y = 6,
+    parse=T, size=5, hjust=0, vjust=1, color=color_b
+  ) +
+  scale_x_continuous(expand = expansion(add = 0)) +
+  coord_fixed(xlim = c(0, 8), ylim = c(0, 8)) +
+  theme_minimal() +
+  labs(
+    title    = "Scenario 4", 
+    subtitle = "Parabolas", 
+    y        = "y"
+  )
+
+ggplot(d, aes(x = x, y = y)) +
+  geom_line(color = "transparent") +
+  # geom_function(fun = \(x) -6 * (x - 2)^2  + 3, color = color_a) +
+  # geom_function(fun = \(x) -1 * (x - 3)^2  + 3, color = color_b) +
+  annotate(
+    "text",
+    label="B: italic(y) == -over(6, 1)*(italic(x) - 2)^2 + 3",
+    x = 0, y = 8,
+    parse=T, size=5, hjust=0, vjust=1, color=color_a
+  ) +
+  annotate(
+    "text",
+    label="R: italic(y) == -over(1, 1)*(italic(x) - 3)^2 + 3",
+    x = 0, y = 6,
+    parse=T, size=5, hjust=0, vjust=1, color=color_b
+  ) +
+  scale_x_continuous(expand = expansion(add = 0)) +
+  coord_fixed(xlim = c(0, 8), ylim = c(0, 8)) +
+  theme_minimal() +
+  labs(
+    title    = "Scenario 5", 
+    subtitle = "Parabolas", 
+    y        = "y"
+  )
+
 ```
