@@ -20,6 +20,9 @@ library(ggplot2)
 d       <- tibble::tibble(x = 1:8, y = (1:8)/8)
 color_a <- "royalblue"
 color_b <- "tomato"
+color_a_light <- scales::alpha(color_a, .4)
+color_b_light <- scales::alpha(color_b, .4)
+line_width    <- 4
 ```
 
 ## Lines
@@ -31,8 +34,8 @@ The following red & blue hills are modeled by a line. "Hill B" is blue and "Hill
 #| layout-ncol: 2
 ggplot(d, aes(x = x, y = y)) +
   geom_line(color = "transparent") +
-  geom_abline(slope = -.25, intercept = 5, color = color_a) +
-  geom_abline(slope = .50, intercept = 2, color = color_b) +
+  geom_abline(slope = -.25, intercept = 5, color = color_a_light, linewidth = line_width) +
+  geom_abline(slope = .50, intercept = 2, color = color_b_light, linewidth = line_width) +
   # annotate(
   #   "text", 
   #   label="B: italic(y) == over(3, 4)*italic(x) + 0", 
@@ -56,8 +59,8 @@ ggplot(d, aes(x = x, y = y)) +
 
 ggplot(d, aes(x = x, y = y)) +
   # geom_line() +
-  geom_abline(slope = .75, intercept = 0, color = color_a) +
-  geom_abline(slope = .50, intercept = 0, color = color_b) +
+  geom_abline(slope = .75, intercept = 0, color = color_a_light, linewidth = line_width) +
+  geom_abline(slope = .50, intercept = 0, color = color_b_light, linewidth = line_width) +
   annotate(
     "text", 
     label="B: italic(y) == over(3, 4)*italic(x) + 0", 
@@ -81,8 +84,8 @@ ggplot(d, aes(x = x, y = y)) +
 
 ggplot(d, aes(x = x, y = y)) +
   # geom_line() +
-  geom_abline(slope = .50, intercept = 2, color = color_a) +
-  geom_abline(slope = .50, intercept = 3, color = color_b) +
+  geom_abline(slope = .50, intercept = 2, color = color_a_light, linewidth = line_width) +
+  geom_abline(slope = .50, intercept = 3, color = color_b_light, linewidth = line_width) +
   annotate(
     "text", 
     label="B: italic(y) == over(1, 2)*italic(x) + 2", 
@@ -106,8 +109,8 @@ ggplot(d, aes(x = x, y = y)) +
 
 ggplot(d, aes(x = x, y = y)) +
   # geom_line() +
-  geom_abline(slope = .25, intercept = 4, color = color_a) +
-  geom_abline(slope = .50, intercept = 3, color = color_b) +
+  geom_abline(slope = .25, intercept = 4, color = color_a_light, linewidth = line_width) +
+  geom_abline(slope = .50, intercept = 3, color = color_b_light, linewidth = line_width) +
   annotate(
     "text", 
     label="B: italic(y) == over(1, 4)*italic(x) + 4", 
@@ -132,8 +135,8 @@ ggplot(d, aes(x = x, y = y)) +
 
 ggplot(d, aes(x = x, y = y)) +
   # geom_line() +
-  # geom_abline(slope = .50, intercept = 2, color = color_a) +
-  # geom_abline(slope = .50, intercept = 3, color = color_b) +
+  # geom_abline(slope = .50, intercept = 2, color = color_a_light, linewidth = line_width) +
+  # geom_abline(slope = .50, intercept = 3, color = color_b_light, linewidth = line_width) +
   annotate(
     "text", 
     label="B: italic(y) == over(3, 4)*italic(x) + 0", 
@@ -157,8 +160,8 @@ ggplot(d, aes(x = x, y = y)) +
 
 ggplot(d, aes(x = x, y = y)) +
   # geom_line() +
-  # geom_abline(slope = .50, intercept = 2, color = color_a) +
-  # geom_abline(slope = .50, intercept = 3, color = color_b) +
+  # geom_abline(slope = .50, intercept = 2, color = color_a_light, linewidth = line_width) +
+  # geom_abline(slope = .50, intercept = 3, color = color_b_light, linewidth = line_width) +
   annotate(
     "text", 
     label="B: italic(y) == over(2, 1)*italic(x) + 0", 
@@ -190,8 +193,8 @@ The following red & blue hills are modeled by a parabola "Hill B" is blue and "H
 #| layout-ncol: 2
 ggplot(d, aes(x = x, y = y)) +
   geom_line(color = "transparent") +
-  geom_function(fun = \(x) -.15 * (x - 5)^2  + 2, color = color_a) +
-  geom_function(fun = \(x) -2 * (x - 5)^2  + 8, color = color_b) +
+  geom_function(fun = \(x) -.15 * (x - 5)^2  + 2, color = color_a_light, linewidth = line_width) +
+  geom_function(fun = \(x) -2 * (x - 5)^2  + 8, color = color_b_light, linewidth = line_width) +
   # annotate(
   #   "text",
   #   label="B: italic(y) == -over(3, 1)*(italic(x) - 5)^2 + 6",
@@ -214,8 +217,8 @@ ggplot(d, aes(x = x, y = y)) +
   )
 ggplot(d, aes(x = x, y = y)) +
   geom_line(color = "transparent") +
-  geom_function(fun = \(x) -3 * (x - 4)^2  + 6, color = color_a) +
-  geom_function(fun = \(x) -.5 * (x - 4)^2  + 3, color = color_b) +
+  geom_function(fun = \(x) -3 * (x - 4)^2  + 6, color = color_a_light, linewidth = line_width) +
+  geom_function(fun = \(x) -.5 * (x - 4)^2  + 3, color = color_b_light, linewidth = line_width) +
   annotate(
     "text",
     label="B: italic(y) == -over(3, 1)*(italic(x) - 5)^2 + 6",
@@ -238,8 +241,8 @@ ggplot(d, aes(x = x, y = y)) +
   )
 ggplot(d, aes(x = x, y = y)) +
   geom_line(color = "transparent") +
-  geom_function(fun = \(x) -1 * (x - 2)^2  + 3, color = color_a) +
-  geom_function(fun = \(x) -1 * (x - 5)^2  + 3, color = color_b) +
+  geom_function(fun = \(x) -1 * (x - 2)^2  + 3, color = color_a_light, linewidth = line_width) +
+  geom_function(fun = \(x) -1 * (x - 5)^2  + 3, color = color_b_light, linewidth = line_width) +
   annotate(
     "text",
     label="B: italic(y) == -over(1, 1)*(italic(x) - 2)^2 + 3",
@@ -262,8 +265,8 @@ ggplot(d, aes(x = x, y = y)) +
   )
 ggplot(d, aes(x = x, y = y)) +
   geom_line(color = "transparent") +
-  geom_function(fun = \(x) -2 * (x - 2)^2  + 3, color = color_a) +
-  geom_function(fun = \(x) -2 * (x - 3)^2  + 6, color = color_b) +
+  geom_function(fun = \(x) -2 * (x - 2)^2  + 3, color = color_a_light, linewidth = line_width) +
+  geom_function(fun = \(x) -2 * (x - 3)^2  + 6, color = color_b_light, linewidth = line_width) +
   annotate(
     "text",
     label="B: italic(y) == -over(2, 1)*(italic(x) - 2)^2 + 3",
@@ -287,8 +290,8 @@ ggplot(d, aes(x = x, y = y)) +
 
 ggplot(d, aes(x = x, y = y)) +
   geom_line(color = "transparent") +
-  # geom_function(fun = \(x) -6 * (x - 2)^2  + 3, color = color_a) +
-  # geom_function(fun = \(x) -1 * (x - 3)^2  + 3, color = color_b) +
+  # geom_function(fun = \(x) -6 * (x - 2)^2  + 3, color = color_a_light, linewidth = line_width) +
+  # geom_function(fun = \(x) -1 * (x - 3)^2  + 3, color = color_b_light, linewidth = line_width) +
   annotate(
     "text",
     label="B: italic(y) == -over(6, 1)*(italic(x) - 2)^2 + 3",
