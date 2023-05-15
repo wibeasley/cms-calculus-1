@@ -7,8 +7,10 @@ format:
   #   default
   docx:
     reference-doc: quarto-template.docx
-    fig-width: 3.5
-    fig-height: 3.5
+    fig-width: 4
+    fig-height: 4
+    fig-dpi: 600
+    
 editor: visual
 ---
 
